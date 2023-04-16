@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/imgs/theme/favicon.svg'%}" />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slider-range.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}" /> 
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
+
+    <!-- noUISlider -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.3/nouislider.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.3/nouislider.min.js"></script>
+    <script src="https://unpkg.com/wnumb@1.2.0/wNumb.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- LOAD NAVBAR HERE -->
+    {% include 'includes/navbar.html' %}
+
+    <!-- LOAD CONTENT HERE -->
+    {% block content %}
+        <!-- CONTENT GOES HERE -->
+    {% endblock %}
+
+    <!-- LOAD FOOTER HERE -->
+    {% include 'includes/footer.html' %}
+
+
+	
+		
+
