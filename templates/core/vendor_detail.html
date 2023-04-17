@@ -122,14 +122,14 @@
                     </div>
                 </div>
                 <div class="product-list mb-50">
-                    {% for product in products%}
+                    {% for p in products%}
                     <div class="product-cart-wrap">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
                                 <div class="product-img-inner">
                                     <a href="#">
-                                        <img class="default-img" src="{{ product.image.url }}" alt="" />
-                                        <img class="hover-img" src="{{ product.image.url }}" alt="" />
+                                        <img class="default-img" src="{{ p.image.url }}" alt="" />
+                                        <img class="hover-img" src="{{ p.image.url }}" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -139,14 +139,14 @@
                                 <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                             </div>
                             <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-{{ product.get_precentage|floatformat:0}}%</span>
+                                <span class="hot">-{{ p.get_precentage|floatformat:0}}%</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
                             <div class="product-category">
-                                <a href="#">{{product.category.title}}</a>
+                                <a href="#">{{p.category.title}}</a>
                             </div>
-                            <h2><a href="#">{{product.title|truncatechars:50}}</a></h2>
+                            <h2><a href="#">{{p.title|truncatechars:50}}</a></h2>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
                                     <div class="product-rating" style="width: 90%"></div>
@@ -154,10 +154,10 @@
                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
                                 <span class="ml-30">500g</span>
                             </div>
-                            <p class="mt-15 mb-15">{{product.description|safe | truncatechars:600}}</p>
+                            <p class="mt-15 mb-15">{{p.description|safe | truncatechars:600}}</p>
                             <div class="product-price">
-                                <span>{{product.price}} </span>
-                                <span class="old-price">{{product.old_price}}</span>
+                                <span>{{p.price}} </span>
+                                <span class="old-price">{{p.old_price}}</span>
                             </div>
                             <div class="mt-30 d-flex align-items-center">
                                 <a aria-label="Buy now" class="btn" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add to Cart</a>

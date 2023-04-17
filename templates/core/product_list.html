@@ -208,6 +208,13 @@
                                                     <span class = "old-price font-small">AED {{ p.old_price }}</span>
                                                 </div>
                                                 <div class = "add-cart">
+                                                    <input type="hidden" name="" id="product-quantity" class="w-25 mb-20 product-quantity-{{p.id}}" value="1" >
+                                                    <input type="hidden" name="" id="" class="product-pid-{{p.pid}}" value="p.pid">
+                                                    <input type="hidden" name="" id="" class="product-image-{{p.pid}}" value="p.image.url">
+                                                    <input type="hidden" name="" id="" class="product-id-{{p.pid}}" value="p.id">
+                                                    <input type="hidden" name="" id="" class="product-title-{{p.pid}}" value="p.title">
+                                                    <button  class="add add-to-cart-btn b-none " data.index={{product.id}}><i class="fi-rs-shopping-cart mr-5" id="add-to-cart-btn"></i>
+                                                        Add</button>
                                                 <a   class = "add" href = "shop-cart.html"><i class = "fi-rs-shopping-cart mr-5"></i>Add </a>
                                             </div>
                                         </div>

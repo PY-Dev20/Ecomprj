@@ -193,30 +193,55 @@ def filter_product_view(request):
     return JsonResponse({'data': data})
 
 def add_to_cart(request):
-    # Retrieve product data from the query string
-    product_id = request.GET.get('id')
-    product_title = request.GET.get('title')
-    product_price = float(request.GET.get('price', 0))
-    quantity = int(request.GET.get('qty', 0))
-
-    # Create a dictionary to hold the product data
-    cart_product = {
-        'title': product_title,
-        'qty': quantity,
-        'price': product_price,
+    cart_product = {}
+    cart_product[str(request.GET['id'])] = {
+        
+        'title': request.GET['title'],
+        'qty': request.GET['qty'],
+        'price': request.GET['price'],
+        'image': request.GET['image'],
+        'pid': request.GET['pid'],
     }
-
-    # Update the cart data in the session
-    cart_data = request.session.get('cart_data_obj', {})
-    if product_id in cart_data:
-        cart_data[product_id]['qty'] = quantity
+    
+    if 'cart_data_obj' in request.session:
+        if str(request.GET['id']) in request.session['cart_data_obj']:
+            cart_data = request.session['cart_data_obj']
+            cart_data[str(request.GET['id'])]['qty'] = int(cart_product[str(request.GET['id'])]['qty'])
+            cart_data.update(cart_data)
+            request.session['cart_data_obj'] = cart_data 
+        else:
+            cart_data = request.session['cart_data_obj']
+            cart_data.update(cart_product)
+            request.session['cart_data_obj'] = cart_data
     else:
-        cart_data[product_id] = cart_product
-    request.session['cart_data_obj'] = cart_data
+        request.session['cart_data_obj'] = cart_product
+    return JsonResponse({'data': request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])})
 
-    # Return a JSON response
-    data = {'data': request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])}
-    return JsonResponse(data)
+# def add_to_cart(request):
+#     # Retrieve product data from the query string
+#     product_id = request.GET.get('id')
+#     product_title = request.GET.get('title')
+#     product_price = float(request.GET.get('price', 0))
+#     quantity = int(request.GET.get('qty', 0))
+
+#     # Create a dictionary to hold the product data
+#     cart_product = {
+#         'title': product_title,
+#         'qty': quantity,
+#         'price': product_price,
+#     }
+
+#     # Update the cart data in the session
+#     cart_data = request.session.get('cart_data_obj', {})
+#     if product_id in cart_data:
+#         cart_data[product_id]['qty'] = quantity
+#     else:
+#         cart_data[product_id] = cart_product
+#     request.session['cart_data_obj'] = cart_data
+
+#     # Return a JSON response
+#     data = {'data': request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])}
+#     return JsonResponse(data)
         
     
 
